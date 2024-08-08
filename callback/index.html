@@ -9,7 +9,7 @@
       const xhr = new XMLHttpRequest();
       xhr.open("POST", "https://api.line.me/oauth2/v2.1/token");
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      const body = JSON.stringify({
+      var body = JSON.stringify({
         grant_type: "authorization_code",
         code: code,
         redirect_uri: "https%3A%2F%2Ffftdareka.github.io%2FLineLogin%2Fcallback.html",
@@ -26,7 +26,7 @@
       const xhr2 = new XMLHttpRequest();
       xhr2.open("POST", "https://api.line.me/oauth2/v2.1/token");
       xhr2.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      const body = JSON.stringify({
+      var body = JSON.stringify({
         id_token: token,
         client_id: "2006030047"
       });
