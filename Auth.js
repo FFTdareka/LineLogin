@@ -20,6 +20,6 @@ authButton.addEventListener('click', () => {
   } else {
     errorText = document.createElement("p");
     errorText.innerText = "認証コードが違います。";
-    document.insertBefore(errorText, authExp);
+    document.body.insertBefore(errorText, authExp);
   }
 })
