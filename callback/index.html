@@ -2,6 +2,8 @@
 <html>
   <head>
     <title>LINE ログインテスト</title>
+  </head>
+  <body>
     <script type="text/javascript">
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
@@ -45,8 +47,5 @@
       p.innerText = "uid: " + uid + "   uname: " + uname;
       document.body.appendChild(p);
     </script>
-  </head>
-  <body>
-
   </body>
 </html>
