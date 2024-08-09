@@ -7,8 +7,6 @@
     <script type="text/javascript">
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get('code');
-      let token;
-      let tokenData;
       fetch('https://api.line.me/oauth2/v2.1/token', {
         method: 'POST',
         headers: {
@@ -24,10 +22,8 @@
       })
       .then(response => response.json())
       .then(data => {
-        token = data.id_token;
-        tokenData = token.split(".");
-      })
-      .catch(error => console.error('Error:', error));
+      let token = data.id_token;
+      let tokenData = token.split(".");
       tokenData.shift();
       tokenData.pop();
       tokenData = atob(tokenData.toString());
@@ -36,6 +32,8 @@
       let p = document.createElement("p");
       p.innerText = "uid: " + uid + "   uname: " + uname;
       document.body.appendChild(p);
+      })
+      .catch(error => console.error('Error:', error));
     </script>
   </body>
 </html>
