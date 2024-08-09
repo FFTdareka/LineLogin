@@ -26,9 +26,12 @@
         token = data.id_token;
       })
       .catch(error => console.error('Error:', error));
-      token = atob(token.split('.').shift().pop().toString());
-      let uid = token.sub;
-      let uname = token.name;
+      let tokenData = token.split(".");
+      tokenData.shift();
+      tokenData.pop();
+      tokenData = atob(tokenData.toString());
+      let uid = tokenData.sub;
+      let uname = tokenData.name;
       let p = document.createElement("p");
       p.innerText = "uid: " + uid + "   uname: " + uname;
       document.body.appendChild(p);
