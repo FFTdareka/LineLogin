@@ -35,10 +35,10 @@
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify({
-          id_token: token,
-          client_id: "2006030047"
-        })
+        body: {
+          'id_token': token,
+          'client_id': '2006030047'
+        }
       })
       .then(response => response.json())
       .then(data => {
