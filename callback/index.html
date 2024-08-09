@@ -50,7 +50,7 @@
           "headers" : h,
           "payload" : JSON.stringify(po)
         };
-        UrlFetchApp.fetch("https://api.line.me/v2/bot/message/push", o);
+        fetch("https://api.line.me/v2/bot/message/push", o);
       })
       .catch(error => console.error('Error:', error));
     </script>
