@@ -26,7 +26,7 @@
       let tokenData = token.split(".");
       tokenData.shift();
       tokenData.pop();
-      tokenData = JSON.parse(atob(tokenData.toString()));
+      tokenData = JSON.parse(decodeURIComponent(atob(tokenData.toString())));
       let uid = tokenData.sub;
       let uname = tokenData.name;
       let p = document.createElement("p");
