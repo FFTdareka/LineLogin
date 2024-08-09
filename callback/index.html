@@ -9,7 +9,7 @@
       const xhr = new XMLHttpRequest();
       xhr.open("POST", "https://api.line.me/oauth2/v2.1/token");
       xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      const body = encodeURIComponent("grand_type") + "=" + encodeURIComponent("authorization_code") + "&" + encodeURIComponent("code") + "=" + encodeURIComponent(code) + "&" + encodeURIComponent("redirect_uri") + "=" + encodeURIComponent("https://fftdareka.github.io/LineLogin/callback") + "&" + encodeURIComponent("client_id") + "=" + encodeURIComponent("2006030047") + "&" + encodeURIComponent("client_secret") + "=" + encodeURIComponent("41e68957a7180b6101c6fab87039b1ca");
+      const body = encodeURIComponent("grant_type") + "=" + encodeURIComponent("authorization_code") + "&" + encodeURIComponent("code") + "=" + encodeURIComponent(code) + "&" + encodeURIComponent("redirect_uri") + "=" + encodeURIComponent("https://fftdareka.github.io/LineLogin/callback") + "&" + encodeURIComponent("client_id") + "=" + encodeURIComponent("2006030047") + "&" + encodeURIComponent("client_secret") + "=" + encodeURIComponent("41e68957a7180b6101c6fab87039b1ca");
       body.replace(/%20/g, '+');
       xhr.onload = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
