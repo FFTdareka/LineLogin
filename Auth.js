@@ -13,7 +13,7 @@ authButton.addEventListener('click', () => {
   let authCodeText = authCode.value;
   let errorText;
   let state = Math.floor( Math.random() * 100000 ).toString().padStart( 5, '0');
-  let url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2006030047&redirect_uri=https%3A%2F%2Ffftdareka.github.io%2FLineLogin%2Fcallback%2F&state=" + state + "&scope=openid";
+  let url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2006030047&redirect_uri=https%3A%2F%2Ffftdareka.github.io%2FLineLogin%2Fcallback&state=" + state + "&scope=openid";
   let authExp = document.getElementById("AuthExp");
   if (authCodeText == auth) {
     location.href = url;
