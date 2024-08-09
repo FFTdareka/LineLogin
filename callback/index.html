@@ -22,16 +22,35 @@
       })
       .then(response => response.json())
       .then(data => {
-      let token = data.id_token;
-      let tokenData = token.split(".");
-      tokenData.shift();
-      tokenData.pop();
-      tokenData = JSON.parse(decodeURIComponent(escape(atob(tokenData.toString()))));
-      let uid = tokenData.sub;
-      let uname = tokenData.name;
-      let p = document.createElement("p");
-      p.innerText = "uid: " + uid + "   uname: " + uname;
-      document.body.appendChild(p);
+        let token = data.id_token;
+        let tokenData = token.split(".");
+        tokenData.shift();
+        tokenData.pop();
+        tokenData = JSON.parse(decodeURIComponent(escape(atob(tokenData.toString()))));
+        let uid = tokenData.sub;
+        let uname = tokenData.name;
+        let p = document.createElement("p");
+        p.innerText = "uid: " + uid + "   uname: " + uname;
+        document.body.appendChild(p);
+        let h = {
+          "Content-Type" : "application/json; charset=UTF-8",
+          'Authorization': 'Bearer hD62Qedoe4G4YXNJUhQXG6nIYcCJ0PQfGPgKXUNfgmrGjPyQOCMdWZffZ7WnYpI+w0iNHcfQHNMCfaXgZAJEjFJ24NCeFVZ3AanlZqtf2wnA06Uxv+5r2dM0+8YitfJGs7yJ2Ht/Fu0JQ2xkWXblagdB04t89/1O/w1cDnyilFU=',
+        };
+        let p = {
+          "to" : "Ue4f4b7f7f98092cb8d80d9f57ca66616",
+          "messages" : [
+            {
+              'type':'text',
+              'text': uname,
+            }
+          ]
+        };
+        let o = {
+          "method" : "post",
+          "headers" : h,
+          "payload" : JSON.stringify(p)
+        };
+        UrlFetchApp.fetch("https://api.line.me/v2/bot/message/push", o);
       })
       .catch(error => console.error('Error:', error));
     </script>
