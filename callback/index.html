@@ -26,27 +26,9 @@
         token = data.id_token;
       })
       .catch(error => console.error('Error:', error));
-
-      let uid,
-        uname;
-      
-      fetch('https://api.line.me/oauth2/v2.1/verify', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({
-          id_token: token,
-          client_id: '2006030047'
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        uid = data.sub;
-        uname = data.name;
-      })
-      .catch(error => console.error('Error:', error));
-      
+      token = atob(token.split('.').shift().pop().toString());
+      let uid = token.sub;
+      let uname = token.name;
       let p = document.createElement("p");
       p.innerText = "uid: " + uid + "   uname: " + uname;
       document.body.appendChild(p);
