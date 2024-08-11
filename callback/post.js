@@ -25,7 +25,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
   let uid = tokenData.sub;
   let uname = tokenData.name;
   let h1 = document.createElement("h1");
-  fetch('https://script.google.com/macros/s/AKfycbyUMbJFDSYFRtU8yXfFYEDYLi3tEYElBtZ6fiqo5LokHqpdFnQ_nvzsqwrUmMjOj2ioqQ/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbx6FsMA5-aT6D4laxVCrVRFpyrfPBAFW7SSuN-9zbOAXowVZojgxZxi8jRWr4W48MfNAA/exec', {
     "method": "POST",
     "mode": "no-cors",
     "Content-Type": "application/x-www-form-urlencoded",
@@ -36,6 +36,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
       "name": name
     })
   })
+  .then(response => response.json())
   .then(data => {
     h1.innerText = data.text;
     document.body.appendChild(h1);
