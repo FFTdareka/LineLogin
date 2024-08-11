@@ -10,7 +10,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
   body: new URLSearchParams({
     grant_type: 'authorization_code',
     code: code,
-    redirect_uri: "https://fftdareka.github.io/LineLogin/callback",
+    redirect_uri: "https://fftdareka.github.io/LineLogin/callback/?reg=" + reg,
     client_id: "2006030047",
     client_secret: "41e68957a7180b6101c6fab87039b1ca"
   })
