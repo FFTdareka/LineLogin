@@ -23,9 +23,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
   let uid = tokenData.sub;
   let uname = tokenData.name;
   let h1 = document.createElement("h1");
-  h1.innerText = "登録が完了しました。";
-  document.body.appendChild(h1);
-  fetch('https://script.google.com/macros/s/AKfycbztcgwo4UeXuvYuXWus1i2d3oVU2_Y71uboeMICVhBSfu74HZoVM14ypn4c1geDva2v/exec', {
+  fetch('https://script.google.com/macros/s/AKfycbxTY-kkfElTEJ8JBmyDejExE1hqWgzUT3_w7vW9uFsPEHoiGjBVNbNqT5NBwppF1FVyhw/exec', {
     "method": "POST",
     "mode": "no-cors",
     "Content-Type": "application/x-www-form-urlencoded",
@@ -33,5 +31,9 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
       "uid": uid,
       "uname": uname
     })
+  })
+  .then(data => {
+    h1.innerText = data;
+    document.body.appendChild(h1);
   })
 })
