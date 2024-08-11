@@ -41,7 +41,6 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
         "reg": reg
       })
     })
-    .then(response => response.text())
     .then(data => {
       let h1 = document.createElement("h1");
       h1.innerText = data;
@@ -65,7 +64,6 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
         "name": name
       })
     })
-    .then(response => response.text())
     .then(data => {
       let h1 = document.createElement("h1");
       h1.innerText = data;
