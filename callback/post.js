@@ -33,7 +33,6 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
   if (reg == "att") {
     fetch(gasUrl, {
       "method": "POST",
-      "mode": "no-cors",
       "Content-Type": "application/x-www-form-urlencoded",
       "body": JSON.stringify({
         "uid": uid,
@@ -41,11 +40,11 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
         "reg": reg
       })
     })
-    .then(response => response.json())
+    .then(response => response.text())
     .then(data => {
       console.log(data);
       let h1 = document.createElement("h1");
-      h1.innerText = data.body;
+      h1.innerText = data;
       document.body.appendChild(h1);
     })
   } else if(reg == "uid") {
@@ -57,7 +56,6 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
     let name = input.value;
     fetch(gasUrl, {
       "method": "POST",
-      "mode": "no-cors",
       "Content-Type": "application/x-www-form-urlencoded",
       "body": JSON.stringify({
         "uid": uid,
@@ -66,11 +64,11 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
         "name": name
       })
     })
-    .then(response => response.json())
+    .then(response => response.text())
     .then(data => {
       console.log(data);
       let h1 = document.createElement("h1");
-      h1.innerText = data.body;
+      h1.innerText = data;
       document.body.appendChild(h1);
     })
   })
