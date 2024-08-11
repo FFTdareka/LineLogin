@@ -25,6 +25,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
   let uid = tokenData.sub;
   let uname = tokenData.name;
   let p = document.createElement("p");
+  p.innerText = "氏名をフルネームで入力し、設定するボタンを押してください。名前に空白は要りません。";
   let input = document.createElement("input");
   input.type = "text";
   let input2 = document.createElement("input");
