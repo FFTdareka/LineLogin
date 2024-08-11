@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get('code');
 const reg = urlParams.get('reg');
-const name = urlParams.get('name');
+const gasUrl = "https://script.google.com/macros/s/AKfycbzgrZ6FUzuQDBBwJsEMQGlfa_bbH0dQJUyYQBY0R24-TKCwq8w2MjRdLdRC9pM2YY6n/exec";
 fetch('https://api.line.me/oauth2/v2.1/token', {
   method: 'POST',
   headers: {
@@ -24,21 +24,52 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
   tokenData = JSON.parse(decodeURIComponent(escape(atob(tokenData.toString()))));
   let uid = tokenData.sub;
   let uname = tokenData.name;
-  fetch('https://script.google.com/macros/s/AKfycbzgrZ6FUzuQDBBwJsEMQGlfa_bbH0dQJUyYQBY0R24-TKCwq8w2MjRdLdRC9pM2YY6n/exec', {
-    "method": "POST",
-    "mode": "no-cors",
-    "Content-Type": "application/x-www-form-urlencoded",
-    "body": JSON.stringify({
-      "uid": uid,
-      "uname": uname,
-      "reg": reg,
-      "name": name
+  let p = document.createElement("p");
+  let input = document.createElement("input");
+  input.type = "text";
+  let input2 = document.createElement("input");
+  input2.type = "submit";
+  input2.value = "設定する";
+  if (reg == "att") {
+    fetch(gasUrl, {
+      "method": "POST",
+      "mode": "no-cors",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "body": JSON.stringify({
+        "uid": uid,
+        "uname": uname,
+        "reg": reg
+      })
     })
-  })
-  .then(response => response.text())
-  .then(data => {
-    let h1 = document.createElement("h1");
-    h1.innerText = data;
-    document.body.appendChild(h1);
+    .then(response => response.text())
+    .then(data => {
+      let h1 = document.createElement("h1");
+      h1.innerText = data;
+      document.body.appendChild(h1);
+    })
+  } else if(reg == "uid") {
+    document.body.appendChild(p);
+    document.body.appendChild(input);
+    document.body.appendChild(input2);
+  }
+  input2.addEventListener("click", () => {
+    let name = input.value;
+    fetch(gasUrl, {
+      "method": "POST",
+      "mode": "no-cors",
+      "Content-Type": "application/x-www-form-urlencoded",
+      "body": JSON.stringify({
+        "uid": uid,
+        "uname": uname,
+        "reg": reg,
+        "name": name
+      })
+    })
+    .then(response => response.text())
+    .then(data => {
+      let h1 = document.createElement("h1");
+      h1.innerText = data;
+      document.body.appendChild(h1);
+    })
   })
 })
