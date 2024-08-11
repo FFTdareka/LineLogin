@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get('code');
 const reg = urlParams.get('reg');
-const gasUrl = "https://script.google.com/macros/s/AKfycbznnRHJmm1tKtq1DizrtIjL0W9IZ8dJcAM9mMCyXcc9qlAv_mofSLApV0R9pCyy-1ugZA/exec";
+const gasUrl = "https://script.google.com/macros/s/AKfycbxKAi8riRhgSPNxi556WAJPUlcJmFaFbQRrgCMdzLQg9rT8MgPVtV1bqh9juWwxFJMVeA/exec";
 fetch('https://api.line.me/oauth2/v2.1/token', {
   method: 'POST',
   headers: {
@@ -41,11 +41,11 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
         "reg": reg
       })
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => {
       console.log(data);
       let h1 = document.createElement("h1");
-      h1.innerText = data;
+      h1.innerText = data.body;
       document.body.appendChild(h1);
     })
   } else if(reg == "uid") {
@@ -66,11 +66,11 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
         "name": name
       })
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(data => {
       console.log(data);
       let h1 = document.createElement("h1");
-      h1.innerText = data;
+      h1.innerText = data.body;
       document.body.appendChild(h1);
     })
   })
