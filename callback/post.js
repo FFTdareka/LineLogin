@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get('code');
 const reg = urlParams.get('reg');
-const gasUrl = "https://script.google.com/macros/s/AKfycbzgrZ6FUzuQDBBwJsEMQGlfa_bbH0dQJUyYQBY0R24-TKCwq8w2MjRdLdRC9pM2YY6n/exec";
+const gasUrl = "https://script.google.com/macros/s/AKfycbz-POgnlzSY7ksAJCE89MUWZTvY-otK89wH2rt0ADtQK4rsr403N8RWtCqyIOKZTbxy5Q/exec";
 fetch('https://api.line.me/oauth2/v2.1/token', {
   method: 'POST',
   headers: {
