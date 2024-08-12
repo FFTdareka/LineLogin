@@ -4,7 +4,7 @@ const reg = urlParams.get('reg');
 const gasUrl = "https://script.google.com/macros/s/AKfycbxKAi8riRhgSPNxi556WAJPUlcJmFaFbQRrgCMdzLQg9rT8MgPVtV1bqh9juWwxFJMVeA/exec";
 let p = document.createElement("p");
 p.innerText = "読み込み中...";
-p.class = "element";
+p.classList.add("element");
 document.body.appendChild(p);
 fetch('https://api.line.me/oauth2/v2.1/token', {
   method: 'POST',
@@ -30,14 +30,14 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
   let uname = tokenData.name;
   let p2 = document.createElement("p");
   p2.innerText = "氏名をフルネームで入力し、設定するボタンを押してください。名前に空白は要りません。";
-  p2.class = "element";
+  p2.classList.add("element");
   let input = document.createElement("input");
   input.type = "text";
-  input.class = "element";
+  input.classList.add("element");
   let input2 = document.createElement("input");
   input2.type = "submit";
   input2.value = "設定する";
-  input.class = "element";
+  input.classList.add("element");
   if (reg == "att") {
     fetch(gasUrl, {
       "method": "POST",
@@ -74,7 +74,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
       });
     let p3 = document.createElement("p");
     p3.innerText = "読み込み中...";
-    p3.id = "element";
+    p3.classList.add("element");
     document.body.appendChild(p3);
     let name = input.value;
     fetch(gasUrl, {
