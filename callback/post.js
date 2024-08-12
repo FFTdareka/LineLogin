@@ -46,7 +46,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
     })
     .then(response => response.text())
     .then(data => {
-      document.body.removeChild(body.lastChild);
+      document.body.removeChild(document.body.lastChild);
       let h1 = document.createElement("h1");
       h1.innerText = data;
       document.body.appendChild(h1);
