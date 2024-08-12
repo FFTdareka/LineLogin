@@ -37,7 +37,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
   let input2 = document.createElement("input");
   input2.type = "submit";
   input2.value = "設定する";
-  input.classList.add("element");
+  input2.classList.add("element");
   if (reg == "att") {
     fetch(gasUrl, {
       "method": "POST",
