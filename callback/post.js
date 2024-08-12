@@ -4,6 +4,7 @@ const reg = urlParams.get('reg');
 const gasUrl = "https://script.google.com/macros/s/AKfycbxKAi8riRhgSPNxi556WAJPUlcJmFaFbQRrgCMdzLQg9rT8MgPVtV1bqh9juWwxFJMVeA/exec";
 let p = document.createElement("p");
 p.innerText = "読み込み中...";
+p.class = "element";
 document.body.appendChild(p);
 fetch('https://api.line.me/oauth2/v2.1/token', {
   method: 'POST',
@@ -29,11 +30,14 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
   let uname = tokenData.name;
   let p2 = document.createElement("p");
   p2.innerText = "氏名をフルネームで入力し、設定するボタンを押してください。名前に空白は要りません。";
+  p2.class = "element";
   let input = document.createElement("input");
   input.type = "text";
+  input.class = "element";
   let input2 = document.createElement("input");
   input2.type = "submit";
   input2.value = "設定する";
+  input.class = "element";
   if (reg == "att") {
     fetch(gasUrl, {
       "method": "POST",
@@ -46,21 +50,31 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
     })
     .then(response => response.text())
     .then(data => {
-      document.body.removeChild(document.body.lastChild);
+      let el = document.querySelectorAll(.element);
+      el.forEach(ele => {
+        ele.remove();
+      });
       let h1 = document.createElement("h1");
       h1.innerText = data;
       document.body.appendChild(h1);
     })
   } else if (reg == "uid") {
-    document.body.removeChild(document.body.lastChild);
+    let el2 = document.querySelectorAll(.element);
+      el2.forEach(ele2 => {
+        ele2.remove();
+      });
     document.body.appendChild(p2);
     document.body.appendChild(input);
     document.body.appendChild(input2);
   }
   input2.addEventListener("click", () => {
-    document.body.removeChild(document.body.lastChild);
+    let el3 = document.querySelectorAll(.element);
+      el3.forEach(ele3 => {
+        ele3.remove();
+      });
     let p3 = document.createElement("p");
     p3.innerText = "読み込み中...";
+    p3.id = "element";
     document.body.appendChild(p3);
     let name = input.value;
     fetch(gasUrl, {
@@ -75,7 +89,10 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
     })
     .then(response => response.text())
     .then(data => {
-      document.body.removeChild(document.body.lastChild);
+      let el4 = document.querySelectorAll(.element);
+      el4.forEach(ele4 => {
+        ele4.remove();
+      });
       let h1 = document.createElement("h1");
       h1.innerText = data;
       document.body.appendChild(h1);
