@@ -50,7 +50,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
     })
     .then(response => response.text())
     .then(data => {
-      let el = document.querySelectorAll(.element);
+      let el = document.querySelectorAll(".element");
       el.forEach(ele => {
         ele.remove();
       });
@@ -59,7 +59,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
       document.body.appendChild(h1);
     })
   } else if (reg == "uid") {
-    let el2 = document.querySelectorAll(.element);
+    let el2 = document.querySelectorAll(".element");
       el2.forEach(ele2 => {
         ele2.remove();
       });
@@ -68,7 +68,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
     document.body.appendChild(input2);
   }
   input2.addEventListener("click", () => {
-    let el3 = document.querySelectorAll(.element);
+    let el3 = document.querySelectorAll(".element");
       el3.forEach(ele3 => {
         ele3.remove();
       });
@@ -89,7 +89,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
     })
     .then(response => response.text())
     .then(data => {
-      let el4 = document.querySelectorAll(.element);
+      let el4 = document.querySelectorAll(".element");
       el4.forEach(ele4 => {
         ele4.remove();
       });
