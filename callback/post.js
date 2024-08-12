@@ -2,6 +2,9 @@ const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get('code');
 const reg = urlParams.get('reg');
 const gasUrl = "https://script.google.com/macros/s/AKfycbxKAi8riRhgSPNxi556WAJPUlcJmFaFbQRrgCMdzLQg9rT8MgPVtV1bqh9juWwxFJMVeA/exec";
+let p = document.createElement("p");
+p.innerText = "読み込み中...";
+document.body.appendChild(p);
 fetch('https://api.line.me/oauth2/v2.1/token', {
   method: 'POST',
   headers: {
@@ -24,8 +27,8 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
   tokenData = JSON.parse(decodeURIComponent(escape(atob(tokenData.toString()))));
   let uid = tokenData.sub;
   let uname = tokenData.name;
-  let p = document.createElement("p");
-  p.innerText = "氏名をフルネームで入力し、設定するボタンを押してください。名前に空白は要りません。";
+  let p2 = document.createElement("p");
+  p2.innerText = "氏名をフルネームで入力し、設定するボタンを押してください。名前に空白は要りません。";
   let input = document.createElement("input");
   input.type = "text";
   let input2 = document.createElement("input");
@@ -43,16 +46,22 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
     })
     .then(response => response.text())
     .then(data => {
+      document.body.removeChild(body.lastChild);
       let h1 = document.createElement("h1");
       h1.innerText = data;
       document.body.appendChild(h1);
     })
-  } else if(reg == "uid") {
-    document.body.appendChild(p);
+  } else if (reg == "uid") {
+    document.body.removeChild(document.body.lastChild);
+    document.body.appendChild(p2);
     document.body.appendChild(input);
     document.body.appendChild(input2);
   }
   input2.addEventListener("click", () => {
+    document.body.removeChild(document.body.lastChild);
+    let p3 = document.createElement("p");
+    p3.innerText = "読み込み中...";
+    document.body.appendChild(p3);
     let name = input.value;
     fetch(gasUrl, {
       "method": "POST",
@@ -66,9 +75,7 @@ fetch('https://api.line.me/oauth2/v2.1/token', {
     })
     .then(response => response.text())
     .then(data => {
-      p.remove();
-      input.remove();
-      input2.remove();
+      document.body.removeChild(document.body.lastChild);
       let h1 = document.createElement("h1");
       h1.innerText = data;
       document.body.appendChild(h1);
