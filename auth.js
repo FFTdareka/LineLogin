@@ -14,7 +14,7 @@ authButton.addEventListener('click', () => {
   let state = Math.floor( Math.random() * 100000 ).toString().padStart( 5, '0');
   let url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2006030047&redirect_uri=https%3A%2F%2Ffftdareka.github.io%2FLineLogin%2Fcallback%2F%3Freg%3Datt&state=" + state + "&scope=profile%20openid";
   let authExp = document.getElementById("AuthExp");
-  fetch(gasUrl, {
+  fetch("https://script.google.com/macros/s/AKfycbx2OrOyX8MfJc9rM7K-7wbr9fPJMwyzqQ1aenFlwvUIO_WAogqAf7ljHyhZSzRay0j8-w/exec", {
     "method": "POST",
     "Content-Type": "application/x-www-form-urlencoded",
     "body": JSON.stringify({
