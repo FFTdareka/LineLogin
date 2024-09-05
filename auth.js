@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
 })
 
 authButton.addEventListener('click', () => {
+  if (document.getElementById("er") != null) {
+    document.getElementById("er").remove();
+  }
   let authCodeText = authCode.value;
   let errorText;
   let state = Math.floor( Math.random() * 100000 ).toString().padStart( 5, '0');
@@ -29,6 +32,8 @@ authButton.addEventListener('click', () => {
     } else {
       errorText = document.createElement("p");
       errorText.innerText = "認証コードが違います。";
+      errorText.style.color = "#FF0000";
+      errorText.id = "er";
       document.body.insertBefore(errorText, authExp);
     }
   })
