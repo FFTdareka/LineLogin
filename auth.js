@@ -1,6 +1,5 @@
 let authCode = document.getElementById("AuthCode");
 let authButton = document.getElementById("AuthButton");
-let auth = "AbCdE";
 
 document.addEventListener('DOMContentLoaded', () => {
   if (location.hash != "") {
@@ -15,11 +14,21 @@ authButton.addEventListener('click', () => {
   let state = Math.floor( Math.random() * 100000 ).toString().padStart( 5, '0');
   let url = "https://access.line.me/oauth2/v2.1/authorize?response_type=code&client_id=2006030047&redirect_uri=https%3A%2F%2Ffftdareka.github.io%2FLineLogin%2Fcallback%2F%3Freg%3Datt&state=" + state + "&scope=profile%20openid";
   let authExp = document.getElementById("AuthExp");
-  if (authCodeText == auth) {
-    location.href = url;
-  } else {
-    errorText = document.createElement("p");
-    errorText.innerText = "認証コードが違います。";
-    document.body.insertBefore(errorText, authExp);
-  }
+  fetch(gasUrl, {
+    "method": "POST",
+    "Content-Type": "application/x-www-form-urlencoded",
+    "body": JSON.stringify({
+      "reg": "auth"
+    })
+  })
+  .then(response => response.text())
+  .then(data => {
+    if (authCodeText == data) {
+      location.href = url;
+    } else {
+      errorText = document.createElement("p");
+      errorText.innerText = "認証コードが違います。";
+      document.body.insertBefore(errorText, authExp);
+    }
+  })
 })
