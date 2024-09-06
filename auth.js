@@ -27,7 +27,13 @@ authButton.addEventListener('click', () => {
   })
   .then(response => response.text())
   .then(data => {
-    if (authCodeText == data) {
+    if (data == "時間外") {
+      errorText = document.createElement("p");
+      errorText.innerText = "認証時間外です。";
+      errorText.style.color = "#FF0000";
+      errorText.id = "er";
+      document.body.insertBefore(errorText, authExp);
+    } else if (authCodeText == data) {
       location.href = url;
     } else {
       errorText = document.createElement("p");
