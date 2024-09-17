@@ -1,6 +1,6 @@
 let authCode = document.getElementById("AuthCode");
 let authButton = document.getElementById("AuthButton");
-const gasUrl = "https://script.google.com/macros/s/AKfycbzgV6hhLwcaaBdztw7zWrIWk_aim59Pn4ZhFI08At5MiHL3GhFC28NJMBaIhmh4EZJd3w/exec";
+const gasUrl = "https://script.google.com/macros/s/AKfycbweYrp-VlGdoeF0Q8RcFPw_B1Ow1_J7lV7BUCuoi65fx4WifUAAegCcEzlHR1ALVYPp-Q/exec";
 
 document.addEventListener('DOMContentLoaded', () => {
   if (location.hash != "") {
