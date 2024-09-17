@@ -1,7 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get('code');
 const reg = urlParams.get('reg');
-const gasUrl = "https://script.google.com/macros/s/AKfycbzgV6hhLwcaaBdztw7zWrIWk_aim59Pn4ZhFI08At5MiHL3GhFC28NJMBaIhmh4EZJd3w/exec";
+const gasUrl = "https://script.google.com/macros/s/AKfycbweYrp-VlGdoeF0Q8RcFPw_B1Ow1_J7lV7BUCuoi65fx4WifUAAegCcEzlHR1ALVYPp-Q/exec";
 let p = document.createElement("p");
 p.innerText = "読み込み中...";
 p.classList.add("element");
